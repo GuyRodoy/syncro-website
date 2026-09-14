@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Syncro — האתר בעדכון</title>
+  <meta name="description" content="סינקרו — ניהול פרויקטים, פיקוח בניה, ניהול BIM וייעוץ הנדסי. האתר נמצא בעדכון ותחזוקה; אנחנו זמינים בוואטסאפ, בטלפון ובמייל.">
+  <meta name="robots" content="noindex, follow">
+  <meta name="theme-color" content="#071723">
+  <meta property="og:title" content="Syncro — האתר בעדכון">
+  <meta property="og:description" content="ניהול פרויקטים | פיקוח בניה | ניהול BIM | ייעוץ הנדסי">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://syncro.co.il/">
+  <meta property="og:image" content="https://syncro.co.il/assets/building.jpg">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Hebrew:wght@400;500;600&display=swap">
+  <style>
+    /* ---- Syncro tokens (subset) ---- */
+    :root {
+      --syncro-amber: #E8931A;
+      --night-navy: #0D1B2A;
+      --ground: #071723;
+      --navy-700: #1A3047;
+      --navy-500: #31506E;
+      --navy-300: #7C95AD;
+      --navy-200: #B3C2D2;
+      --amber-400: #F0A63F;
+      --amber-600: #C9760F;
+      --font-sans: "IBM Plex Sans Hebrew", "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+      --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: var(--ground); }
+    body { color: var(--navy-200); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
+    a { color: var(--navy-200); }
+    a:hover { color: var(--amber-400); }
+    img { max-width: 100%; }
+
+    .page { min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column; background: var(--ground); }
+
+    /* ---- Hero ---- */
+    .hero { position: relative; width: 100%; height: 78vh; min-height: 480px; overflow: hidden; flex-shrink: 0; background: var(--ground); }
+    #hero { position: absolute; inset: 0; direction: ltr; }
+    syncro-building { position: absolute; inset: 0; display: block; }
+    #photo { position: absolute; inset: 0; z-index: 2; opacity: 1; will-change: opacity, transform; }
+    #photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    #logo { position: absolute; top: 0; left: 0; right: 0; z-index: 6; pointer-events: none; }
+    #logo .in { max-width: 1440px; margin: 0 auto; padding: 30px 44px; display: flex; justify-content: flex-end; }
+    #logo img { height: 46px; }
+    .hero-fade { position: absolute; left: 0; right: 0; bottom: 0; height: 140px; z-index: 7; pointer-events: none;
+      background: linear-gradient(to bottom, rgba(7,23,35,0), var(--ground)); }
+
+    /* ---- Main ---- */
+    main { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; text-align: center; padding: 8px 24px 56px; position: relative; }
+    .wordmark { height: 52px; margin-bottom: 26px; }
+    .services { margin: 0 0 34px; font-size: 19px; font-weight: 400; color: var(--navy-200); line-height: 1.6; letter-spacing: 0.01em; }
+    .services .sep { color: var(--amber-400); padding: 0 10px; }
+    .status { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+    .status .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--syncro-amber); box-shadow: 0 0 12px rgba(245,165,36,.55); }
+    .status .label { font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--amber-400); }
+    .lede { margin: 0 0 40px; font-size: 17px; color: var(--navy-300); max-width: 460px; line-height: 1.7; }
+    .actions { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; gap: 10px; border-radius: 10px; text-decoration: none; font-family: var(--font-sans);
+      transition: background 160ms cubic-bezier(.2,0,0,1), border-color 160ms cubic-bezier(.2,0,0,1), transform 160ms cubic-bezier(.2,0,0,1); }
+    .btn-primary { padding: 13px 26px; background: var(--syncro-amber); color: var(--night-navy); font-size: 16px; font-weight: 600; }
+    .btn-primary:hover { background: var(--amber-600); color: var(--night-navy); }
+    .btn-primary:active { transform: scale(0.99) translateY(0.5px); }
+    .btn-ghost { padding: 13px 22px; border: 1px solid var(--navy-700); color: #fff; font-size: 15px; font-weight: 500; letter-spacing: 0.03em; }
+    .btn-ghost.num { letter-spacing: 0.04em; font-variant-numeric: tabular-nums; }
+    .btn-ghost:hover { border-color: var(--navy-500); background: rgba(255,255,255,0.04); color: #fff; }
+
+    /* ---- Footer ---- */
+    footer { position: relative; background: #f4f7fa; padding: 20px 24px; display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
+    footer .co { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.1em; color: var(--navy-700); display: inline-flex; align-items: center; gap: 10px; }
+    footer .co img { height: 13px; display: block; }
+
+    @media (max-width: 600px) {
+      .hero { height: 58vh; min-height: 360px; }
+      #logo .in { padding: 20px 20px; }
+      #logo img { height: 36px; }
+      .services { font-size: 16px; }
+      .services .sep { padding: 0 6px; }
+      .actions { flex-direction: column; width: 100%; }
+      .actions .btn { width: 100%; max-width: 360px; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+  <section class="hero" aria-label="Syncro">
+    <div id="hero">
+      <syncro-building progress="0"></syncro-building>
+      <div id="photo"><img src="assets/building.jpg" alt=""></div>
+      <div id="logo"><div class="in"><img src="assets/syncro-logo.svg" alt="Syncro"></div></div>
+    </div>
+    <div class="hero-fade"></div>
+  </section>
+
+  <main>
+    <img class="wordmark" src="assets/syncro-logo.svg" alt="Syncro">
+    <p class="services">ניהול פרויקטים <span class="sep">|</span> פיקוח בניה <span class="sep">|</span> ניהול BIM <span class="sep">|</span> ייעוץ הנדסי</p>
+    <div class="status">
+      <span class="dot"></span>
+      <span class="label">Under Maintenance</span>
+      <span class="dot"></span>
+    </div>
+    <p class="lede">האתר נמצא בעדכון ותחזוקה. אנחנו זמינים עבורכם בכל ערוץ אחר — נשמח לעמוד לשירותכם.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="https://wa.me/972549603292" target="_blank" rel="noopener">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.94L2 22l5.2-1.5A9.9 9.9 0 1 0 12.04 2zm0 18.1a8.2 8.2 0 0 1-4.2-1.15l-.3-.18-3.08.89.85-3.01-.2-.31a8.2 8.2 0 1 1 6.93 3.76zm4.5-6.14c-.25-.12-1.46-.72-1.68-.8-.23-.08-.4-.12-.56.13-.16.24-.64.8-.78.96-.14.16-.29.18-.53.06a6.7 6.7 0 0 1-3.35-2.93c-.25-.43.25-.4.72-1.34.08-.16.04-.3-.02-.42-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.19 1.1.16 1.52.1.46-.07 1.46-.6 1.66-1.18.2-.57.2-1.06.14-1.17-.06-.1-.22-.16-.47-.28z"/></svg>
+        וואטסאפ
+      </a>
+      <a class="btn btn-ghost num" href="tel:0723902080" dir="ltr">072-3902080</a>
+      <a class="btn btn-ghost" href="mailto:Office@syncro.co.il" dir="ltr">Office@syncro.co.il</a>
+    </div>
+  </main>
+
+  <footer>
+    <span class="co" dir="ltr">SYNCRO — A <img src="assets/talguy-group.png" alt="TalGuy Group"> COMPANY</span>
+  </footer>
+</div>
+
+<script src="assets/syncro-building.js" defer></script>
+<script>
+(function () {
+  var CYCLE = 60;          // full loop length, seconds
+  var HOLD_COMPLETE = 5;   // pause on the finished building (photo visible)
+  var HOLD_PLAN = 2.5;     // pause on the 2D plan
+  function start() {
+    var b = document.querySelector('syncro-building');
+    var photo = document.getElementById('photo');
+    if (!b || !photo) return;
+    var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced) { b.setAttribute('progress', '0'); photo.style.opacity = '1'; return; }
+    var t0 = performance.now();
+    var ease = function (u) { u = Math.max(0, Math.min(1, u)); return u * u * (3 - 2 * u); };
+    var visible = true;
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) {
+        visible = es[0].isIntersecting;
+        if (visible) requestAnimationFrame(loop);
+      }, { threshold: 0.05 }).observe(document.getElementById('hero'));
+    }
+    function loop() {
+      var anim = (CYCLE - HOLD_COMPLETE - HOLD_PLAN) / 2;
+      var t = ((performance.now() - t0) / 1000) % CYCLE;
+      var p;
+      if (t < HOLD_COMPLETE) p = 0;
+      else if (t < HOLD_COMPLETE + anim) p = ease((t - HOLD_COMPLETE) / anim);
+      else if (t < HOLD_COMPLETE + anim + HOLD_PLAN) p = 1;
+      else p = 1 - ease((t - HOLD_COMPLETE - anim - HOLD_PLAN) / anim);
+      b.setAttribute('progress', p.toFixed(4));
+      var o = Math.max(0, Math.min(1, 1 - p / 0.1));
+      photo.style.opacity = o.toFixed(3);
+      photo.style.transform = 'scale(' + (1 + 0.04 * (1 - o)).toFixed(4) + ')';
+      if (visible) requestAnimationFrame(loop);
+    }
+    requestAnimationFrame(loop);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
+  else start();
+})();
+</script>
+</body>
+</html>
