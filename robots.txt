@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://syncro.co.il/sitemap.xml
